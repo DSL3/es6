@@ -1,6 +1,22 @@
-const Message = require('./message.model');
+//const Message = require('./message.model');
 
-class ImageMessage extends Message {
+//class ImageMessage extends Message {
+
+
+//importar mais 
+//import { default as Message, a,b,c} from './message.model';
+
+//lodash
+// import * as _ 'lodash';
+// _.map();
+// _.reduce();
+
+
+//import { default as Message} from './message.model';
+import Message from './message.model';
+
+
+export default class ImageMessage extends Message {}
   constructor(text = '', created = Date.now(),
     url = '', thumbnail = '') {
     super(text, created);
