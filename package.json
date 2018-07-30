@@ -6,7 +6,8 @@
   "scripts": {
     "start": "http-server",
     "lint": "eslint",
-    "build": "webpack --watch --devtool source-map",
+    "build": "cross-env NODE_ENV=development webpack --config webpack.config.js",
+    "build:prod": "webpack",
     "nodemon": "nodemon"
   },
   "repository": {
@@ -28,6 +29,7 @@
   },
   "homepage": "https://github.com/Especializa/es6#readme",
   "devDependencies": {
+    "cross-env": "^5.2.0",
     "eslint": "^3.14.0",
     "eslint-config-airbnb-base": "^11.0.1",
     "eslint-plugin-import": "^2.2.0",
