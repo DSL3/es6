@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
 const config = {
   entry: './app/index.js',
   output: {
@@ -26,6 +25,14 @@ const config = {
           transpile: true,
         },
       },
+      {
+        loader: 'babel-loader',
+        test: /\.js$/,
+        exclude: /node_modules/,
+        query: {
+          presets: ['es2015']
+        }
+      }
     ],
   },
 };
