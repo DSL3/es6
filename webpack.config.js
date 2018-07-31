@@ -9,15 +9,34 @@ const extractSass = new ExtractTextWebpackPlugin({
 });
 
 const config = {
-  entry: './app/index.js',
+  // entry: [
+  //     './app/index.js',
+  //     './app/old-messages.js'
+  //   ],
+  entry: {
+    main: './app/index.js',
+    oldMessages: './app/old-messages.js',
+  },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: '[name].[hash:8].bundle.js',
     publicPath: '/',
   },
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'commons',
+      filename: 'commons.[name].[hash:8].bundle.js',
+      minChunks: 2,
+    }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'app', 'index.html'),
+      filename: 'index.html',
+      chunks: ['main', 'commons'],
+    }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'app', 'old-messages.html'),
+      filename: 'old-messages.html',
+      chunks: ['oldMessages', 'commons'],
     }),
     extractSass,
   ],
@@ -84,6 +103,6 @@ if (process.env.NODE_ENV === 'development') {
     hot: true,
   };
   config.plugins.push(new webpack.HotModuleReplacementPlugin());
-} 
+}
 
 module.exports = config;
