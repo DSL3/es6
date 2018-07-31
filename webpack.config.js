@@ -2,11 +2,19 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
+const UglifyJsWebpackPlugin = require('uglifyjs-webpack-plugin');
+const CompressionWebpackplugin = require('compression-webpack-plugin');
 
 const extractSass = new ExtractTextWebpackPlugin({
   filename: '[name].[contenthash:8].bundle.css',
   disable: false,
 });
+
+const minify = {
+  collapseWhitespace: true,
+  conservationCollapse: true,
+  removeComments: true,
+};
 
 const config = {
   entry: {
@@ -28,13 +36,19 @@ const config = {
       template: path.join(__dirname, 'app', 'index.html'),
       filename: 'index.html',
       chunks: ['main', 'commons'],
+      minify,
     }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'app', 'old-messages.html'),
       filename: 'old-messages.html',
       chunks: ['oldMessages', 'commons'],
+      minify,
     }),
     extractSass,
+    new UglifyJsWebpackPlugin(),
+    new CompressionWebpackplugin({
+      asset: '[path].gz',
+    }),
   ],
   module: {
     rules: [
@@ -52,7 +66,11 @@ const config = {
         test: /\.js$/,
         loader: 'babel-loader',
         options: {
-          presets: ['es2015'],
+          presets: [
+            ['es2015', {
+              modules: false, 
+            }],
+          ],
         },
         exclude: /node_modules/,
       },
