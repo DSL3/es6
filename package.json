@@ -6,11 +6,11 @@
   "scripts": {
     "start": "http-server",
     "lint": "eslint",
-    "build": "NODE_ENV=development webpack",
+    "build": "set NODE_ENV=development && webpack",
     "build:prod": "webpack",
     "nodemon": "nodemon",
     "serve": "webpack-dev-server",
-    "hot": "NODE_ENV=hot webpack-dev-server",
+    "hot": "set NODE_ENV=hot && webpack-dev-server",
     "express": "NODE_ENV=development PORT=8080 node server.js",
     "express:prod": "npm run build:prod && PORT=8081 node server.js"
   },
@@ -42,15 +42,18 @@
     "eslint-plugin-import": "^2.2.0",
     "express": "^4.14.1",
     "extract-text-webpack-plugin": "^2.0.0-rc.3",
+    "file-loader": "^1.1.11",
     "html-es6-template-loader": "^1.0.2",
     "html-webpack-plugin": "^2.28.0",
     "http-server": "^0.9.0",
+    "image-webpack-loader": "^4.3.1",
     "node-sass": "^4.5.0",
     "nodemon": "^1.11.0",
     "sass-loader": "^5.0.1",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^2.2.1",
+    "webpack-cli": "^3.1.0",
     "webpack-dev-middleware": "^1.10.0",
     "webpack-dev-server": "^2.3.0"
   }
