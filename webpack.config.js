@@ -84,6 +84,6 @@ if (process.env.NODE_ENV === 'development') {
     hot: true,
   };
   config.plugins.push(new webpack.HotModuleReplacementPlugin());
-}
+} 
 
 module.exports = config;
