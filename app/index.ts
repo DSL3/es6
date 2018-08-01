@@ -1,30 +1,34 @@
 import moment from 'moment';
-import Message from './model/message.model';
-import template from './messages.html';
 import './styles/modules/MessageBox.scss';
 import './styles/modules/MessagesArea.scss';
-import logo from './images/especializa_logo.jpg';
+
+
+const template: any = require('./messages.html');
+const logo: any = require('./images/especializa_logo.jpg');
 
 console.log('Index started');
-console.dir(new Message());
+
 
 const Message = function(text) {
   this.text = text;
   this.created = Date.now();
 };
 
+//console.dir(new Message());
+
 /* eslint no-undef: 0 */
-document.getElementById('send').onclick = () => {
+(<HTMLButtonElement> document.getElementById('send')).onclick = () => {
   const m = new Message(
     (<HTMLInputElement>document.getElementById('message')).value,
   );
-  document.getElementById('messages').innerHTML += template({
+
+  (<HTMLElement> document.getElementById('messages')).innerHTML += template({
     m,
     relativeTime: moment(m.created).fromNow(),
   });
 };
 
-document.getElementById('logo').src = logo;
+(<HTMLImageElement> document.getElementById('logo')).src = logo;
 
 if (module && module.hot) {
   module.hot.accept();

@@ -1,5 +1,8 @@
 {
     "compilerOptions": {
+        "target": "es5",
+        "module": "es2015",
+        "moduleResolution": "node",
         "strictNullChecks": true,
         "allowSyntheticDefaultImports": true,
        // "allowJs": true
