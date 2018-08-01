@@ -1,0 +1,10 @@
+declare const myString: String;
+declare const myBoolean: boolean;
+declare const myNumber: number;
+declare const myArray: string[];
+declare const myTuple: [string, number];
+declare const myUnknown: any;
+declare const myVoid: void;
+declare const a: undefined;
+declare const a1: string | null;
+declare const test: () => string | void;

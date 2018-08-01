@@ -4,6 +4,10 @@ const myNumber: number = 10.5;
 const myArray: string[]= ['A', 'B', 'C'];
 const myTuple: [string, number] = ['A', 10];
 
+// const myTuple2: (string, number)[] = [10, 'A'];
+
+// myTuple2[2] = 10;
+
 const myUnknown: any = true;
 const myVoid: void = undefined;// || null; //utilizado em funções
 
