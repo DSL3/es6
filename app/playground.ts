@@ -1,22 +1,28 @@
+// import { ImageMessage } from './model';
+// import { Message } from './model';
 import { ImageMessage } from './model/image-message.model';
 import { Message } from './model/message.model';
+
+
+export namespace questions {
+   export interface Question {
+        title: string;
+        created: number;
+    }
+    export const q: Question = { title: 'My Question', created: Date.now() };
+}
 
 // const myUnion: string | number | boolean | Message =new ImageMessage ();
 
 // união ou iterseção
 type  myUnionType = string | number | boolean | Message;
 
-interface Question {
-    title: string;
-    created: number;
-}
 
-const q: Question = { title: 'My Question', created: Date.now() };
 
-type myUnionType2 = Message | Question;
-type myIntersecType = Message & Question;
+type myUnionType2 = Message | questions.Question;
+type myIntersecType = Message & questions.Question;
 
-const x: myUnionType2 = q;
+// const x: myUnionType2 = q;
 
 const y: myIntersecType = { title: 'My Title', text: 'My text', created: 0 };
 

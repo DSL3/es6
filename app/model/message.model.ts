@@ -7,8 +7,8 @@
 // }
 
 // export class Message implements Model {
- //export class Message {
- export abstract class Message {
+ export class Message {
+ // export abstract class Message {
   // public static newEmptyMessage(): Message {
   //   return new Message();
   // }
