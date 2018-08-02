@@ -1,6 +1,11 @@
 import { ImageMessage } from './model/image-message.model';
 import { Message } from './model/message.model';
 
+interface Factory {
+  (text: string): Promise<any>;
+}
+
+// const messageFactory: Factory = (text: string): Promise<Message> => {
 function messageFactory(text: string): Promise<Message> {
   const giphy: RegExp = /\/giphy ('.*'|\w+)/;
   if (giphy.test(text)) {
@@ -19,7 +24,7 @@ function messageFactory(text: string): Promise<Message> {
     .catch(() => new Message(text)) as Promise<Message>;
   }
   return Promise.resolve(new Message(text));
-}
+};
 
 class Store<T> {
   private store: Set<T>;

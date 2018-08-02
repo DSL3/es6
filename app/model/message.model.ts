@@ -1,4 +1,12 @@
-export class Message {
+
+interface Model {
+  text: string;
+  created: number;
+  save(): void;
+  delete(): void;
+}
+
+export class Message implements Model {
   public static newEmptyMessage(): Message {
     return new Message();
   }
@@ -10,4 +18,11 @@ export class Message {
     const { created, text } = this;
     return `Message created at: ${created} - Text: ${text}`;
   }
+  public save(): void {
+    console.log('save');
+  }
+  public delete(): void {
+    console.log('delete');
+  }
+
 }
