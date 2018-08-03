@@ -1,21 +1,16 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
 // const test = () => {
-var test = function (data) {
-    console.log(data);
-    return function (target) {
-        console.log(target);
-    };
-};
-var deprecated = function (target) {
-    console.log('this has been deprecated');
-};
+// const test: ClassDecorator = (data: any) => {
+//   console.log(data);
+//   return (target: Function) => {
+//     console.log(target);
+//   };
+// };
+Object.defineProperty(exports, "__esModule", { value: true });
+// const deprecated: ClassDecorator = (target: Function ) => {
+//   console.log('this has been deprecated');
+// };
+// @test({ foo: 'bar' }) @deprecated
 var Message = /** @class */ (function () {
     function Message(text, created) {
         if (text === void 0) { text = ''; }
@@ -23,18 +18,13 @@ var Message = /** @class */ (function () {
         this.text = text;
         this.created = created;
     }
-    Message_1 = Message;
     Message.newEmptyMessage = function () {
-        return new Message_1();
+        return new Message();
     };
     Message.prototype.toString = function () {
         var _a = this, created = _a.created, text = _a.text;
         return "Message created at: " + created + " - Text: " + text;
     };
-    var Message_1;
-    Message = Message_1 = __decorate([
-        test({ foo: 'bar' }), deprecated
-    ], Message);
     return Message;
 }());
 exports.Message = Message;

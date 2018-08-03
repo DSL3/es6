@@ -11,6 +11,6 @@
       "dom.iterable",
       "scripthost"
     ],
-     "experimentalDecorators": true,
+    // "experimentalDecorators": true,
   }
 }

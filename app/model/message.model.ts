@@ -1,16 +1,16 @@
 // const test = () => {
-const test: ClassDecorator = (data: any) => {
-  console.log(data);
-  return (target: Function) => {
-    console.log(target);
-  };
-};
+// const test: ClassDecorator = (data: any) => {
+//   console.log(data);
+//   return (target: Function) => {
+//     console.log(target);
+//   };
+// };
 
-const deprecated: ClassDecorator = (target: Function ) => {
-  console.log('this has been deprecated');
-};
+// const deprecated: ClassDecorator = (target: Function ) => {
+//   console.log('this has been deprecated');
+// };
 
-@test({ foo: 'bar' }) @deprecated 
+// @test({ foo: 'bar' }) @deprecated
 export class Message {
   public static newEmptyMessage(): Message {
     return new Message();
