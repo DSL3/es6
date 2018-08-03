@@ -1,4 +1,13 @@
 "use strict";
+// const test: Function = (data: any) => {
+//   console.log(data);
+//   return (target: Function) => {
+//     console.log(target);
+//   };
+// };
+// const deprecated: ClassDecorator = (target: Function) => {
+//   console.log('This has been deprecated');
+// };
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6,22 +15,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var test = function (data) {
-    console.log(data);
-    return function (target) {
-        console.log(target);
+var Deprecated = function (data) {
+    return function (target, propertKey) {
+        console.warn((propertKey || 'This class') + " has been deprecated, " +
+            ("Reason " + data.reason + "\n") +
+            ("You should use " + data.replacement + " instead"));
     };
 };
-var deprecated = function (target) {
-    console.log('This has been deprecated');
-};
-var Message = Message_1 = (function () {
+var Message = /** @class */ (function () {
     function Message(text, created) {
         if (text === void 0) { text = ''; }
         if (created === void 0) { created = Date.now(); }
         this.text = text;
         this.created = created;
     }
+    Message_1 = Message;
     Message.newEmptyMessage = function () {
         return new Message_1();
     };
@@ -29,10 +37,19 @@ var Message = Message_1 = (function () {
         var _a = this, created = _a.created, text = _a.text;
         return "Message created at: " + created + " - Text: " + text;
     };
+    var Message_1;
+    __decorate([
+        Deprecated({
+            reason: 'useless method',
+            replacement: 'normal constructor',
+        })
+    ], Message, "newEmptyMessage", null);
+    Message = Message_1 = __decorate([
+        Deprecated({
+            reason: 'IDK',
+            replacement: 'OtherMessageClass',
+        })
+    ], Message);
     return Message;
 }());
-Message = Message_1 = __decorate([
-    test({ foo: 'bar' }), deprecated
-], Message);
 exports.Message = Message;
-var Message_1;
